@@ -7,15 +7,24 @@ def calcularEdad(cumple):
     edad = fechActual.year - cumple.year - ((fechActual.month, fechActual.day) < (cumple.month, cumple.day))
     return edad
 
+#Dado el numero de años trabajados en condiciones peligrosas
+#devuelve el descuento a la edad de jubilacion
+def calcularDescuento(tiempo):
+    x = tiempo//4
+    if x >= 5:
+        return 5
+    return x
+
 #Codigo para validar si la persona aplica a una pension
 #segun lo definido en Ley del Seguro Social
 def aplicaPensionIVSS(sexo,horasAcreditadas,fechaDeNacimiento,condicionesPeligrosas):
     temp = fechaDeNacimiento.split('-', 3)
     edad  = calcularEdad(date(int(temp[0]), int(temp[1]), int(temp[2])))
+    descuentoDeAnos = calcularDescuento(condicionesPeligrosas)
 
     if horasAcreditadas >= 750:
-        if sexo == 'F' and edad >= 55:
+        if sexo == 'F' and edad >= (55 - descuentoDeAnos):
             return True
-        elif sexo == 'M' and edad >= 60:
+        elif sexo == 'M' and edad >= (60 - descuentoDeAnos):
             return True
     return False
