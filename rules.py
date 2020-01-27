@@ -13,8 +13,9 @@ def aplicaPensionIVSS(sexo,horasAcreditadas,fechaDeNacimiento,condicionesPeligro
     temp = fechaDeNacimiento.split('-', 3)
     edad  = calcularEdad(date(int(temp[0]), int(temp[1]), int(temp[2])))
 
-    if sexo == 'F' and edad >= 55:
-        return True
-    elif sexo == 'M' and edad >= 60:
-        return True
+    if horasAcreditadas >= 750:
+        if sexo == 'F' and edad >= 55:
+            return True
+        elif sexo == 'M' and edad >= 60:
+            return True
     return False
