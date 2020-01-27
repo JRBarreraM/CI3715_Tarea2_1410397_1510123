@@ -28,6 +28,21 @@ class pensionTester(unittest.TestCase):
         self.assertEqual(aplicaPensionIVSS('F',750,'1970-01-26',25), True)
         print("Case5: Approved")
 
+    #Hombre de 59 años con 750 horas acreditas sin años peligrosos 
+    def testCase6(self):
+        self.assertEqual(aplicaPensionIVSS('M',750,'1961-01-26',0), False)
+        print("Case6: Approved")
+
+    #Hombre de 59 años con 749 horas acreditas sin años peligrosos 
+    def testCase7(self):
+        self.assertEqual(aplicaPensionIVSS('M',749,'1961-01-26',0), False)
+        print("Case7: Approved")
+
+    #Hombre de 55 años con 750 horas acreditas con 25 años peligrosos 
+    def testCase8(self):
+        self.assertEqual(aplicaPensionIVSS('M',750,'1965-01-26',25), True)
+        print("Case8: Approved")
+
 
 if __name__ == '__main__':
     unittest.main(warnings='ignore')
