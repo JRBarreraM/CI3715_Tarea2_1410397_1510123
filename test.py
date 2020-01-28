@@ -3,30 +3,30 @@ from rules import *
 
 class pensionTester(unittest.TestCase):
 
-    #Mujer de 55 años con 750 horas acreditas sin años peligrosos 
-    def testCase1(self):
+    #Mujer de 55 años con 750 horas acreditadas sin años peligrosos 
+    def testCase01(self):
         self.assertEqual(aplicaPensionIVSS('F',750,'1965-01-26',0), True)
-        print("Case1: Approved")
+        print("Case01: Approved")
 
-    #Hombre de 60 años con 750 horas acreditas sin años peligrosos 
-    def testCase2(self):
+    #Hombre de 60 años con 750 horas acreditadas sin años peligrosos 
+    def testCase02(self):
         self.assertEqual(aplicaPensionIVSS('M',750,'1960-01-21',0), True)
-        print("Case2: Approved")
+        print("Case02: Approved")
     
-    #Mujer de 54 años con 750 horas acreditas sin años peligrosos 
-    def testCase3(self):
+    #Mujer de 54 años con 750 horas acreditadas sin años peligrosos 
+    def testCase03(self):
         self.assertEqual(aplicaPensionIVSS('F',750,'1966-01-26',0), False)
-        print("Case3: Approved")
+        print("Case03: Approved")
 
-    #Mujer de 54 años con 749 horas acreditas sin años peligrosos 
-    def testCase4(self):
+    #Mujer de 54 años con 749 horas acreditadas sin años peligrosos 
+    def testCase04(self):
         self.assertEqual(aplicaPensionIVSS('F',749,'1966-01-26',0), False)
-        print("Case4: Approved")
+        print("Case04: Approved")
 
-    #Mujer de 50 años con 750 horas acreditas con 25 años peligrosos 
-    def testCase5(self):
+    #Mujer de 50 años con 750 horas acreditadas con 25 años peligrosos 
+    def testCase05(self):
         self.assertEqual(aplicaPensionIVSS('F',750,'1970-01-26',25), True)
-        print("Case5: Approved")
+        print("Case05: Approved")
 
     #Hombre de 59 años con 750 horas acreditas sin años peligrosos 
     def testCase6(self):
