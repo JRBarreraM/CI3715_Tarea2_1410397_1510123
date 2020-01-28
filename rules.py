@@ -2,10 +2,13 @@ from datetime import date
 
 #Dada una fecha de nacimiento en formato YYYY-MM-DD
 #devuelve la edad
-def calcularEdad(cumple): 
+def calcularEdad(cumple):
     fechActual = date.today() 
-    edad = fechActual.year - cumple.year - ((fechActual.month, fechActual.day) < (cumple.month, cumple.day))
-    return edad
+    try:
+        edad = fechActual.year - cumple.year - ((fechActual.month, fechActual.day) < (cumple.month, cumple.day))
+        return edad
+    except ValueError:
+        return -1
 
 #Dado el numero de años trabajados en condiciones peligrosas
 #devuelve el descuento a la edad de jubilacion
@@ -19,7 +22,10 @@ def calcularDescuento(tiempo):
 #segun lo definido en Ley del Seguro Social
 def aplicaPensionIVSS(sexo,horasAcreditadas,fechaDeNacimiento,condicionesPeligrosas):
     temp = fechaDeNacimiento.split('-', 3)
-    edad  = calcularEdad(date(int(temp[0]), int(temp[1]), int(temp[2])))
+    try:
+        edad  = calcularEdad(date(int(temp[0]), int(temp[1]), int(temp[2])))
+    except ValueError:
+        return False
     descuentoDeAnos = calcularDescuento(condicionesPeligrosas)
 
     if horasAcreditadas >= 750:
